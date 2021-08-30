@@ -53,7 +53,7 @@ def Sort_Tuple(tup):
     return tup.reverse()
 
 
-rap = xlscrape("test.xlsx")
+rap = xlscrape("CR_SF_Credit-Repair.xlsx")
 
 # TODO: Clean up data refinement mess
 
@@ -70,7 +70,7 @@ spreadsheet_data = [
                                  "Risk_Title",
                                  "Ownership",
                                  "Status",
-                                 "Type",
+                                 "Value_Stream",
                                  "Cause",
                                  "Effect",
                                  "Impact",
@@ -139,7 +139,7 @@ def make_rap_slide(idx):
     risk_grid = slide.placeholders[10]
     owner_tag = slide.placeholders[11]
     status_tag = slide.placeholders[12]
-    type_tag = slide.placeholders[13]
+    stream_tag = slide.placeholders[13]
     risk_title = slide.placeholders[14]
     cause_text = slide.placeholders[20]
     effect_text = slide.placeholders[22]
@@ -153,7 +153,7 @@ def make_rap_slide(idx):
             rap["Residual_Severity"][idx]) + str(rap["Residual_Likelihood"][idx])) + ".png")
     owner_tag.text = str(rap["Ownership"][idx])
     status_tag.text = str(rap["Status"][idx])
-    type_tag.text = str(rap["Type"][idx])
+    stream_tag.text = str(rap["Value_Stream"][idx])
     risk_title.text = str(rap["Risk_Title"][idx])
 
     cause_text.text = str(rap["Cause"][idx])
@@ -182,7 +182,7 @@ def make_title_slide(title, subhead=""):
 #   https://stackoverflow.com/questions/2563822/how-do-you-composite-an-image-onto-another-image-with-pil-in-python
 def make_summary_slide(list):
     slide = prs.slides.add_slide(prs.slide_layouts[2])
-    slide.placeholders[0].text = "Risk Readiness"
+    slide.placeholders[0].text = "Top 20 Risks Overview"
     # if len(list) > 18:
     #     slide2 = prs.slides.add_slide(prs.slide_layouts[2])
     #     slide2.placeholders[0].text = "Risk Readiness cont."
